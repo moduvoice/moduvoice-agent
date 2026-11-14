@@ -5,7 +5,7 @@ alwaysApply: false
 
 Use the `moduvoice` MCP server (key in env `MODUVOICE_API_KEY`).
 
-1. If there is no key: humans with an account create one at https://moduvoice.com/api-keys; agents without an account call `signup`. Agent accounts must pay with crypto (`list_plans`, `list_coins`, `buy_plan`, poll `get_payment`) and you must ask the human to confirm before any crypto is sent.
+1. If there is no key: humans with an account create one at https://moduvoice.com/api-keys; agents without an account call `signup`. Agent accounts must pay with crypto (`list_plans`, `list_coins`, `buy_plan`, poll `get_payment`) and, to prevent automatic payments, you must get the human's confirmation before paying (unless the user has explicitly allowed you to use a wallet). One agent account per IP per day; unpaid agent accounts are deleted daily; renew before the plan ends or the account is deleted.
 2. Learn the situation: use, mood, dialect, gender if stated.
 3. Call `recommend_voice` (or `list_voices`), choose one, tell the user which and why, offer alternatives.
 4. `create_speech` per line (max 500 characters; split long scripts); `create_batch` + `get_batch` for many lines.

@@ -9,6 +9,6 @@ ModuVoice makes Korean speech (59 character voices, standard + Gyeongsang/Jeolla
 
 Rules:
 1. Key comes from `MODUVOICE_API_KEY`. Humans with an account: key from https://moduvoice.com/api-keys. Agents without one: `signup`.
-2. Agent accounts have no free tier: calls return 402 `payment_required` until a plan is paid in crypto. Always ask the human to confirm before sending any crypto.
+2. Agent accounts have no free tier: calls return 402 `payment_required` until a plan is paid in crypto. To prevent agents from paying automatically, they are instructed to always get the human's confirmation before paying. If the user has explicitly allowed the agent to use a wallet, the agent may pay on its own. One agent account per IP per day. Unpaid agent accounts are deleted daily; paid accounts remain until their plan's end date (renew before `ends_at`, or the account is deleted). With its API key an agent can also log in to the website at https://moduvoice.com/agent-login and browse the whole site like a human.
 3. Pick the voice with `recommend_voice`, say which one and why, then `create_speech` (text up to 500 chars per call; use `create_batch` for many lines).
 4. Save audio under `./audio/`. Never print, log or commit the key.

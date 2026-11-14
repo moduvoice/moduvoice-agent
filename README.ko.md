@@ -12,7 +12,7 @@
 사람과 AI 에이전트는 요금제, 가격, 기능, 한도가 똑같아요.
 
 1. **이미 모두보이스 계정이 있어요**: https://moduvoice.com/api-keys 에서 API 키를 만들고 `export MODUVOICE_API_KEY=...` 로 넣어요. 무료 요금제도 무료 한도 안에서 쓸 수 있어요(API는 하루 5분까지, 유료 요금제는 하루 한도가 없어요).
-2. **사람 계정이 없는 AI 에이전트예요**: `signup` 도구(이메일 없음)로 에이전트 계정과 키를 바로 받아요. 에이전트 계정은 **무료 구간이 없어요**. 계정 상태, 요금제, 코인, 결제, 키 교체를 뺀 모든 호출이 요금제를 **가상화폐로** 결제하기 전까지 402 `payment_required` 를 돌려줘요(`buy_plan` → 코인 보내기 → `get_payment` 확인). 코인을 보내기 전에는 반드시 사람에게 확인받아야 해요. 도구가 직접 돈을 옮기지는 않아요. 에이전트 계정당 키는 하나이고, 키를 바꾸면 옛 키는 지워지고, 잃어버린 키는 되찾을 수 없어요.
+2. **사람 계정이 없는 AI 에이전트예요**: `signup` 도구(이메일 없음)로 에이전트 계정과 키를 바로 받아요. 에이전트 계정은 **무료 구간이 없어요**. 계정 상태, 요금제, 코인, 결제, 키 교체를 뺀 모든 호출이 요금제를 **가상화폐로** 결제하기 전까지 402 `payment_required` 를 돌려줘요(`buy_plan` → 코인 보내기 → `get_payment` 확인). 에이전트가 자동으로 결제해 버리는 것을 막기 위해, 결제 전에 꼭 사람의 확인을 받으라고 지시했어요. 사용자가 에이전트에게 지갑 사용을 명시적으로 허용했다면 에이전트가 스스로 결제할 수 있어요. 에이전트 계정당 키는 하나이고, 키를 바꾸면 옛 키는 지워지고, 잃어버린 키는 되찾을 수 없어요. 같은 IP에서는 하루에 에이전트 계정을 하나만 만들 수 있어요. 결제하지 않은 에이전트 계정은 하루마다 삭제 처리되고, 결제한 계정은 결제 종료일까지 남아 있어요(종료일 전에 다시 결제하지 않으면 계정이 지워져요). API 키로 https://moduvoice.com/agent-login 에서 웹사이트에 로그인해 사람처럼 사이트 전체를 볼 수도 있어요.
 
 요금제(plus / pro / max, 30일, 자동 갱신 없음): https://moduvoice.com/pricing. 키는 절대 커밋하지 마세요.
 
@@ -28,7 +28,7 @@
 MCP만 쓰려면 `claude mcp add --transport http moduvoice https://api.moduvoice.com/mcp --header "Authorization: Bearer $MODUVOICE_API_KEY"` (키가 Claude 설정에 저장돼요). 플러그인은 실행할 때 환경변수에서 키를 읽어요. 참고: 플러그인 안 http 서버 헤더의 `${MODUVOICE_API_KEY}` 는 문서에 있지만 아직 직접 시험하지 않았어요.
 
 ### Codex CLI
-[`codex/config.toml`](codex/config.toml) 내용을 `~/.codex/config.toml` 에 붙이고, `codex/scripts/sync-skill.sh` 로 스킬을 `~/.agents/skills/moduvoice-voice/` 에 복사해요. [codex/README.md](codex/README.md) 참고. 아직 시험하지 않았어요(스킬 폴더 위치와 `$skill-installer` 문법이 확인되지 않았어요).
+[`codex/config.toml`](codex/config.toml) 내용을 `~/.codex/config.toml` 에 붙이고, `codex/scripts/sync-skill.sh` 로 스킬을 `~/.agents/skills/moduvoice-voice/` 에 복사해요. [codex/README.md](codex/README.md) 참고. Codex CLI 0.163 으로 끝까지 시험했어요(`codex exec` 비대화 모드에서는 생성 도구를 쓰려면 `--approve-for-me` 를 붙여요).
 
 ### Cursor
 [`cursor/mcp.json`](cursor/mcp.json) 을 `~/.cursor/mcp.json`(또는 `.cursor/mcp.json`)에, [`cursor/rules/moduvoice.mdc`](cursor/rules/moduvoice.mdc) 를 `.cursor/rules/` 에 복사해요. 키는 셸·시스템 환경변수에 있어야 해요. 아직 시험하지 않았어요. Cursor 플러그인 형식이 확인되지 않아 원클릭 설치는 넣지 않았어요.

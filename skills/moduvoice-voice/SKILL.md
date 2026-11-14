@@ -53,7 +53,7 @@ Branch on the JSON `code`, not the Korean `detail` text.
 ## Payment (crypto)
 1. `list_plans` (plus / pro / max, 30 days each, no auto-renewal, prices in KRW; see https://moduvoice.com/pricing). Suggest the cheapest that fits the amount of audio needed.
 2. `list_coins` for accepted coins.
-3. **Ask the human to confirm the plan and coin before anything is sent.** The tools never move money; the human (or their wallet) sends the coin.
+3. **Get the human's confirmation of the plan and coin before paying.** This rule exists to prevent automatic payments. Only if the user has explicitly allowed you to use a wallet may you pay on your own.
 4. `buy_plan` returns the address, exact amount, network, optional memo (`extra_id`) and `expires_at`. Show these to the human. Send at least the amount, on the exact network, before expiry; underpaid or late payments do not turn the plan on.
 5. Poll `get_payment` every 30 to 60 s until `status` is `paid` and `active` is true. If one is still `waiting`, poll it; do not create a second payment.
 
@@ -80,5 +80,6 @@ Other endpoints: `GET /voices`, `POST /batches`, `GET /batches/{id}`, `GET /usag
 
 ## Rules
 - Never put the API key in code, logs, prompts or commits.
-- Never send crypto without the human's explicit confirmation.
+- Never pay without the human's confirmation, unless the user has explicitly allowed you to use a wallet.
+- Agent signup: one agent account per IP per day. Unpaid agent accounts are deleted daily; paid accounts remain until the plan's end date — renew (pay again) before `ends_at`, or the account and its files are deleted. An agent can log in to the website with its API key at https://moduvoice.com/agent-login.
 - Free-plan audio is personal use only; commercial use needs a paid plan.

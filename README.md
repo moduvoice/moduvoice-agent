@@ -12,7 +12,7 @@ Korean AI text-to-speech for your coding agent: 59 character voices (standard Ko
 Humans and AI agents get the same plans, prices, features and limits.
 
 1. **You already have a ModuVoice account**: create an API key at https://moduvoice.com/api-keys and `export MODUVOICE_API_KEY=...`. The free plan works too, within free limits (API limited to 5 minutes of audio per day; paid plans have no daily limit).
-2. **You are an AI agent without a human account**: the `signup` tool (no email) gives an agent account and a key at once. Agent accounts have **no free tier**: every call except account status, plans, coins, payment and key rotation returns 402 `payment_required` until a plan is paid **with crypto** (`buy_plan`, send the coin, poll `get_payment`). The agent must ask the human to confirm before any crypto is sent; the tools never move money. One key per agent account; rotating deletes the old key; a lost key cannot be recovered.
+2. **You are an AI agent without a human account**: the `signup` tool (no email) gives an agent account and a key at once. Agent accounts have **no free tier**: every call except account status, plans, coins, payment and key rotation returns 402 `payment_required` until a plan is paid **with crypto** (`buy_plan`, send the coin, poll `get_payment`). To prevent agents from paying automatically, they are instructed to always get the human's confirmation before paying. If the user has explicitly allowed the agent to use a wallet, the agent may pay on its own. One key per agent account; rotating deletes the old key; a lost key cannot be recovered. One agent account per IP per day. Unpaid agent accounts are deleted daily; paid accounts remain until their plan's end date (renew before `ends_at`, or the account is deleted). With its API key an agent can also log in to the website at https://moduvoice.com/agent-login and browse the whole site like a human.
 
 Plans (plus / pro / max, 30 days, no auto-renewal): https://moduvoice.com/pricing. Never commit your key.
 
@@ -28,7 +28,7 @@ Set the key first: `export MODUVOICE_API_KEY=<your key>` (never paste it into fi
 Or MCP only: `claude mcp add --transport http moduvoice https://api.moduvoice.com/mcp --header "Authorization: Bearer $MODUVOICE_API_KEY"` (this stores the key in your Claude config). The plugin reads the key from the environment at run time. Note: the plugin's `${MODUVOICE_API_KEY}` header with an http server is documented but not yet tested by us.
 
 ### Codex CLI
-Add [`codex/config.toml`](codex/config.toml) to `~/.codex/config.toml`, then install the skill: `codex/scripts/sync-skill.sh` copies it to `~/.agents/skills/moduvoice-voice/`. See [codex/README.md](codex/README.md). Not yet tested (skill folder location and `$skill-installer` syntax unconfirmed).
+Add [`codex/config.toml`](codex/config.toml) to `~/.codex/config.toml`, then install the skill: `codex/scripts/sync-skill.sh` copies it to `~/.agents/skills/moduvoice-voice/`. See [codex/README.md](codex/README.md). Tested end-to-end with Codex CLI 0.163 (in `codex exec`, add `--approve-for-me` so write tools can run).
 
 ### Cursor
 Copy [`cursor/mcp.json`](cursor/mcp.json) to `~/.cursor/mcp.json` (or `.cursor/mcp.json`) and [`cursor/rules/moduvoice.mdc`](cursor/rules/moduvoice.mdc) to `.cursor/rules/`. The key must be in your shell/system environment. Not yet tested; one-click install via a Cursor plugin is not provided because its schema is unconfirmed.
