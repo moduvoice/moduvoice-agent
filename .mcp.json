@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "moduvoice": {
+      "type": "http",
+      "url": "https://api.moduvoice.com/mcp",
+      "headers": { "Authorization": "Bearer ${MODUVOICE_API_KEY}" }
+    }
+  }
+}

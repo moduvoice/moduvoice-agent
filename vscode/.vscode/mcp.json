@@ -1,0 +1,17 @@
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "moduvoice-api-key",
+      "description": "ModuVoice API key",
+      "password": true
+    }
+  ],
+  "servers": {
+    "moduvoice": {
+      "type": "http",
+      "url": "https://api.moduvoice.com/mcp",
+      "headers": { "Authorization": "Bearer ${input:moduvoice-api-key}" }
+    }
+  }
+}

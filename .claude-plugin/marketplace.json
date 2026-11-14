@@ -1,0 +1,12 @@
+{
+  "name": "moduvoice",
+  "description": "ModuVoice plugins",
+  "owner": { "name": "ModuVoice" },
+  "plugins": [
+    {
+      "name": "moduvoice",
+      "source": "./",
+      "description": "Korean TTS MCP server + skill (59 voices, dialects)"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Append to ~/.codex/config.toml
+[mcp_servers.moduvoice]
+url = "https://api.moduvoice.com/mcp"
+bearer_token_env_var = "MODUVOICE_API_KEY"

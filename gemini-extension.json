@@ -1,0 +1,19 @@
+{
+  "name": "moduvoice",
+  "version": "0.1.0",
+  "mcpServers": {
+    "moduvoice": {
+      "httpUrl": "https://api.moduvoice.com/mcp",
+      "headers": { "Authorization": "Bearer ${MODUVOICE_API_KEY}" }
+    }
+  },
+  "contextFileName": "GEMINI.md",
+  "settings": [
+    {
+      "name": "ModuVoice API Key",
+      "description": "ModuVoice API key (create one at https://moduvoice.com/api-keys)",
+      "envVar": "MODUVOICE_API_KEY",
+      "sensitive": true
+    }
+  ]
+}
