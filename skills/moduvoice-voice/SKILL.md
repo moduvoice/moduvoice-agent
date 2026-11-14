@@ -1,6 +1,6 @@
 ---
 name: moduvoice-voice
-description: Make Korean speech with ModuVoice (59 character voices, standard Korean plus Gyeongsang, Jeolla and Pyongyang dialects). Use when the user asks to turn a line or script into a voice that fits some use or mood, TTS, narration, an ad or anchor voice, a dialect voice, or says things like "음성으로 만들어", "내레이션", "성우 목소리", "TTS", "make this line in a voice that fits X". Works for humans with their own API key and for AI agents with an agent account.
+description: Make speech with ModuVoice (69 character voices: Korean standard plus Gyeongsang, Jeolla and Pyongyang dialects, and English, Vietnamese, Chinese, Thai and Indonesian voices). Use when the user asks to turn a line or script into a voice that fits some use or mood, TTS, narration, an ad or anchor voice, a dialect voice, or says things like "음성으로 만들어", "내레이션", "성우 목소리", "TTS", "make this line in a voice that fits X". Works for humans with their own API key and for AI agents with an agent account.
 license: MIT
 compatibility: Needs the ModuVoice MCP server (https://api.moduvoice.com/mcp) or curl/HTTP access, and env MODUVOICE_API_KEY.
 ---

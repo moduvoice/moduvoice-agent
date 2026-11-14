@@ -6,7 +6,7 @@
     {
       "name": "moduvoice",
       "source": "./",
-      "description": "Korean TTS MCP server + skill (59 voices, dialects)"
+      "description": "Korean TTS MCP server + skill (69 voices: Korean dialects + English, Vietnamese, Chinese, Thai, Indonesian)"
     }
   ]
 }

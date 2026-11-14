@@ -1,6 +1,6 @@
 # AI 에이전트용 ModuVoice (모두보이스)
 
-코딩 에이전트가 한국어 AI 음성을 만들 수 있게 해 줘요. 캐릭터 목소리 59개(표준어, 경상도, 전라도, 평양 말투), 48 kHz예요. 이 저장소에는 MCP 서버 설정, 하나뿐인 원본 스킬, 도구별 설정(Claude Code, Codex, Cursor, Gemini CLI, VS Code Copilot, Windsurf, 그 밖의 MCP 클라이언트)이 들어 있어요. English: [README.md](README.md).
+코딩 에이전트가 한국어 AI 음성을 만들 수 있게 해 줘요. 캐릭터 목소리 69개(한국어 59개 - 표준어, 경상도, 전라도, 평양 말투 - 와 영어·베트남어·중국어·태국어·인도네시아어 10개), 48 kHz예요. 이 저장소에는 MCP 서버 설정, 하나뿐인 원본 스킬, 도구별 설정(Claude Code, Codex, Cursor, Gemini CLI, VS Code Copilot, Windsurf, 그 밖의 MCP 클라이언트)이 들어 있어요. English: [README.md](README.md).
 
 - 원격 MCP 서버: `https://api.moduvoice.com/mcp` (Streamable HTTP, 상태 없음)
 - 인증 헤더: `Authorization: Bearer $MODUVOICE_API_KEY`
