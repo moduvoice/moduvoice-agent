@@ -27,7 +27,7 @@ Find out, from the request or by asking one short question: what the audio is fo
 Call `recommend_voice` with the situation (and `text` / `dialect` if known). Use `list_voices` to browse or verify an id. Never invent voice ids. Tell the user which voice you picked and why in one or two lines, and name one or two alternatives. If nothing fits, default to `sera` (standard Korean narration).
 
 ### 4. Create the audio
-- One line: `create_speech` with `voice` and `input` (1 to 500 characters of Korean text). It waits up to about 30 s and returns the audio URL.
+- One line: `create_speech` with `voice` and `text` (1 to 500 characters of Korean text; the REST API calls this field `input`). It waits up to about 30 s and returns the audio URL.
 - Long script: split on sentence boundaries into lines of at most about 450 characters. For many lines use `create_batch` (up to 100 items, each with your own `id` to keep order), then `get_batch` until `status` is `done` or `partial` (poll no more often than every 30 s).
 - If a call answers "queued" (HTTP 202), the GPU is busy or restarting; poll with `get_batch` / the `status_url` instead of keeping the connection open.
 - Only items with `status: "done"` have a `url`.

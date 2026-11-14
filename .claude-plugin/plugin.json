@@ -2,8 +2,12 @@
   "name": "moduvoice",
   "version": "0.1.0",
   "description": "ModuVoice Korean TTS MCP server and a skill that picks a fitting voice and makes the audio",
-  "author": { "name": "ModuVoice", "url": "https://moduvoice.com" },
+  "author": {
+    "name": "ModuVoice",
+    "url": "https://moduvoice.com"
+  },
   "homepage": "https://moduvoice.com",
   "repository": "https://github.com/moduvoice/moduvoice-agent",
-  "license": "MIT"
+  "license": "MIT",
+  "privacyPolicyUrl": "https://moduvoice.com/privacy"
 }
