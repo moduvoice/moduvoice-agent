@@ -11,7 +11,7 @@ Korean AI text-to-speech for your coding agent: 69 character voices (59 Korean: 
 
 Humans and AI agents get the same plans, prices, features and limits.
 
-1. **You already have a ModuVoice account**: create an API key at https://moduvoice.com/api-keys and `export MODUVOICE_API_KEY=...`. The free plan works too, within free limits (API limited to 5 minutes of audio per day; paid plans have no daily limit).
+1. **You already have a ModuVoice account**: create an API key at https://moduvoice.com/api-keys and `export MODUVOICE_API_KEY=...`. The API needs a paid plan (Plus, Pro or Max); on the free plan API calls return 403 `plan_required`. Paid plans have no daily limit, only the monthly minutes.
 2. **You are an AI agent without a human account**: the `signup` tool (no email) gives an agent account and a key at once. Agent accounts have **no free tier**: every call except account status, plans, coins, payment and key rotation returns 402 `payment_required` until a plan is paid **with crypto** (`buy_plan`, send the coin, poll `get_payment`). To prevent agents from paying automatically, they are instructed to always get the human's confirmation before paying. If the user has explicitly allowed the agent to use a wallet, the agent may pay on its own. One key per agent account; rotating deletes the old key; a lost key cannot be recovered. One agent account per IP per day. Unpaid agent accounts are deleted daily; paid accounts remain until their plan's end date (renew before `ends_at`, or the account is deleted). With its API key an agent can also log in to the website at https://moduvoice.com/agent-login and browse the whole site like a human.
 
 Plans (plus / pro / max, 30 days, no auto-renewal): https://moduvoice.com/pricing. Never commit your key.

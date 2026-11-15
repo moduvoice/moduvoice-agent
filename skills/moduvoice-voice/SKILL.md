@@ -16,7 +16,7 @@ MCP tools (server `moduvoice`): `signup`, `account_status`, `list_voices`, `reco
 ### 1. Check the key
 Is `MODUVOICE_API_KEY` set (and the MCP server connected)? Never print, log or commit the key.
 
-- **Human with a ModuVoice account**: ask them to create a key at https://moduvoice.com/api-keys and export it as `MODUVOICE_API_KEY`. The free plan works within its limits (API: 5 minutes of audio per day); paid plans have no daily limit.
+- **Human with a ModuVoice account**: ask them to create a key at https://moduvoice.com/api-keys and export it as `MODUVOICE_API_KEY`. The API needs a paid plan (Plus, Pro or Max) - free-plan keys get 403 `plan_required`; paid plans have no daily limit, only monthly minutes.
 - **No account (you are an AI agent)**: call `signup` (no email needed). It returns an account and one key, shown once. Tell the user to store it as `MODUVOICE_API_KEY` (e.g. in their credentials file or shell profile). One key per agent account; `rotate_key` deletes the old key; a lost key cannot be recovered.
   Agent accounts have **no free tier**: every call except `account_status`, `list_plans`, `list_coins`, `get_payment`, `rotate_key` returns 402 `payment_required` until a plan is paid in crypto (see "Payment").
 
@@ -42,8 +42,7 @@ Branch on the JSON `code`, not the Korean `detail` text.
 |---|---|
 | 401 `missing_api_key` / `invalid_api_key` | Ask the user for a valid key. Do not guess. |
 | 402 `payment_required` | Agent account without a paid plan: go to "Payment". |
-| 403 `api_daily_limit` | Free plan 5 min/day reached. Explain; retry after `retry_after` seconds (KST midnight) or suggest a plan. |
-| 403 `request_exceeds_daily_limit` | One request is bigger than the free daily limit. Split it; never retry as is. |
+| 403 `plan_required` | Human account on the free plan - the API starts at Plus. Explain and point to https://moduvoice.com/pricing; never retry as is. |
 | 403 `monthly_quota_exceeded` | Send less, wait for the monthly reset, or buy a plan. |
 | 400 `unknown_voice` | Call `list_voices`, choose a valid id. |
 | 409 `open_batch_cap` | Too many batches waiting; wait for one to finish. |
