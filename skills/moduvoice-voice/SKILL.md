@@ -33,10 +33,10 @@ Call `recommend_voice` with the situation (and `text` / `dialect` if known). Use
 - Only items with `status: "done"` have a `url`.
 
 ### 5. Save and report
-Download each URL (plain GET, no key needed) to the project, default `./audio/<slug>-<voice>.mp3` (create the folder; slug from the text or purpose). Report the path, voice and duration (`audio_seconds`). For several lines, join them in order only if the user asks (re-encode with ffmpeg for mp3). Audio is also kept in the account's storage for 28 days.
+Download each URL (plain GET, no key needed) to the project, default `./audio/<slug>-<voice>.mp3` (create the folder; slug from the text or purpose). Report the path, voice and duration (`audio_seconds`). For several lines, join them in order only if the user asks (re-encode with ffmpeg for mp3). Audio is also kept in the account's storage for the plan's retention period (Plus 28 days, Pro 60, Max 90; Free 7).
 
 ### 5b. Get earlier audio from storage
-When the user asks for audio made before (on the website or through the API): `list_files` (newest first; filter with `type`, `since`; page with `cursor` = `next_cursor` while `has_more`). Each item has `filename`, `character_name`, `text` (first 200 characters), `duration_seconds`, `expires_at` (deleted 28 days after creation) and a signed `download_url` valid for 1 hour. Download it with a plain GET and save it under `filename` (for example `./audio/<filename>`); if the URL expired, call `get_file_download_url`. A file id that is not yours or no longer exists gives 404 `file_not_found`. `get_storage_usage` shows space used. Never delete storage files unless the user asks (REST `DELETE /files/{id}`, cannot be undone; there is no MCP tool for it).
+When the user asks for audio made before (on the website or through the API): `list_files` (newest first; filter with `type`, `since`; page with `cursor` = `next_cursor` while `has_more`). Each item has `filename`, `character_name`, `text` (first 200 characters), `duration_seconds`, `expires_at` (when it is deleted; depends on the current plan) and a signed `download_url` valid for 1 hour. Download it with a plain GET and save it under `filename` (for example `./audio/<filename>`); if the URL expired, call `get_file_download_url`. A file id that is not yours or no longer exists gives 404 `file_not_found`. `get_storage_usage` shows space used. Never delete storage files unless the user asks (REST `DELETE /files/{id}`, cannot be undone; there is no MCP tool for it).
 
 ### 6. Errors
 Branch on the JSON `code`, not the Korean `detail` text.
@@ -50,7 +50,7 @@ Branch on the JSON `code`, not the Korean `detail` text.
 | 400 `unknown_voice` | Call `list_voices`, choose a valid id. |
 | 409 `open_batch_cap` | Too many batches waiting; wait for one to finish. |
 | 403 `storage_full` | Storage is full: show `get_storage_usage` and ask the user what to delete. |
-| 404 `file_not_found` | Not in this account's storage (or already deleted after 28 days): call `list_files` again. |
+| 404 `file_not_found` | Not in this account's storage (or already deleted after the retention period): call `list_files` again. |
 | 429 / 502 / 503 (retryable) | Wait `retry_after` (or 30 s) and retry. |
 | 400 / 401 / 403 / 422 otherwise | Do not retry the same request; fix it or tell the user. |
 

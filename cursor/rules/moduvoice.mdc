@@ -9,7 +9,7 @@ Use the `moduvoice` MCP server (key in env `MODUVOICE_API_KEY`).
 2. Learn the situation: use, mood, dialect, gender if stated.
 3. Call `recommend_voice` (or `list_voices`), choose one, tell the user which and why, offer alternatives.
 4. `create_speech` per line (max 500 characters; split long scripts); `create_batch` + `get_batch` for many lines.
-5. Download the returned URL to `./audio/<slug>-<voice>.mp3` and report path and duration. Earlier audio (kept 28 days): `list_files`, then download `download_url` (valid 1 hour; refresh with `get_file_download_url`).
+5. Download the returned URL to `./audio/<slug>-<voice>.mp3` and report path and duration. Earlier audio (kept 28/60/90 days on Plus/Pro/Max): `list_files`, then download `download_url` (valid 1 hour; refresh with `get_file_download_url`).
 6. Errors: 402 -> payment flow; 403 -> explain the limit (`plan_required`: the API needs Plus or higher; `monthly_quota_exceeded`; `storage_full`); 429 -> wait and retry.
 
 Full details: `skills/moduvoice-voice/SKILL.md`.
