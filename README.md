@@ -4,7 +4,7 @@ Korean AI text-to-speech for your coding agent: 69 character voices (59 Korean: 
 
 - Remote MCP server: `https://api.moduvoice.com/mcp` (Streamable HTTP, stateless)
 - Auth header: `Authorization: Bearer $MODUVOICE_API_KEY`
-- Tools: `signup`, `account_status`, `list_voices`, `recommend_voice`, `create_speech`, `create_batch`, `get_batch`, `get_usage`, `list_plans`, `list_coins`, `buy_plan`, `get_payment`, `rotate_key`
+- Tools: `signup`, `account_status`, `list_voices`, `recommend_voice`, `create_speech`, `create_batch`, `get_batch`, `get_usage`, `list_files`, `get_file`, `get_file_download_url`, `get_storage_usage`, `list_plans`, `list_coins`, `buy_plan`, `get_payment`, `rotate_key`
 - Skill: [`skills/moduvoice-voice/SKILL.md`](skills/moduvoice-voice/SKILL.md) (pick a fitting voice, make the audio, save it)
 
 ## Getting a key

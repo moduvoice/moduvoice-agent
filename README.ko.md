@@ -4,7 +4,7 @@
 
 - 원격 MCP 서버: `https://api.moduvoice.com/mcp` (Streamable HTTP, 상태 없음)
 - 인증 헤더: `Authorization: Bearer $MODUVOICE_API_KEY`
-- 도구: `signup`, `account_status`, `list_voices`, `recommend_voice`, `create_speech`, `create_batch`, `get_batch`, `get_usage`, `list_plans`, `list_coins`, `buy_plan`, `get_payment`, `rotate_key`
+- 도구: `signup`, `account_status`, `list_voices`, `recommend_voice`, `create_speech`, `create_batch`, `get_batch`, `get_usage`, `list_files`, `get_file`, `get_file_download_url`, `get_storage_usage`, `list_plans`, `list_coins`, `buy_plan`, `get_payment`, `rotate_key`
 - 스킬: [`skills/moduvoice-voice/SKILL.md`](skills/moduvoice-voice/SKILL.md) (상황에 맞는 목소리를 고르고, 음성을 만들고, 파일로 저장해요)
 
 ## 키 받기

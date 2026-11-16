@@ -3,7 +3,7 @@
 ModuVoice makes speech (69 character voices: 59 Korean - standard + Gyeongsang/Jeolla/Pyongyang dialects - and 10 foreign voices in English, Vietnamese, Chinese, Thai and Indonesian, 48 kHz).
 
 - MCP server: `https://api.moduvoice.com/mcp` (Streamable HTTP), header `Authorization: Bearer $MODUVOICE_API_KEY`.
-- Tools: `signup`, `account_status`, `list_voices`, `recommend_voice`, `create_speech`, `create_batch`, `get_batch`, `get_usage`, `list_plans`, `list_coins`, `buy_plan`, `get_payment`, `rotate_key`.
+- Tools: `signup`, `account_status`, `list_voices`, `recommend_voice`, `create_speech`, `create_batch`, `get_batch`, `get_usage`, `list_files`, `get_file`, `get_file_download_url`, `get_storage_usage`, `list_plans`, `list_coins`, `buy_plan`, `get_payment`, `rotate_key`.
 - No MCP? Use the REST API: https://moduvoice.com/docs/api.md (base `https://api.moduvoice.com/api/v1`).
 - Full workflow: `skills/moduvoice-voice/SKILL.md`.
 
