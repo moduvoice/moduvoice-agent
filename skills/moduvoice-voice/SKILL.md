@@ -31,6 +31,7 @@ Call `recommend_voice` with the situation (and `text` / `dialect` if known). Use
 - Long script: split on sentence boundaries into lines of at most about 450 characters. For many lines use `create_batch` (up to 100 items, each with your own `id` to keep order), then `get_batch` until `status` is `done` or `partial` (poll no more often than every 30 s).
 - If a call answers "queued" (HTTP 202), the GPU is busy or restarting; poll with `get_batch` / the `status_url` instead of keeping the connection open.
 - Only items with `status: "done"` have a `url`.
+- No emotion settings: Korean voices need no emotion or style tags - an LLM reads the context and performs the line with a fitting emotion (감정 지정 필요 없이 LLM이 문맥을 보고 알맞은 감정으로 연기해요). Send the plain line; do not add tags or bracketed directions such as `(angry)`.
 
 ### 5. Save and report
 Download each URL (plain GET, no key needed) to the project, default `./audio/<slug>-<voice>.mp3` (create the folder; slug from the text or purpose). Report the path, voice and duration (`audio_seconds`). For several lines, join them in order only if the user asks (re-encode with ffmpeg for mp3). Audio is also kept in the account's storage for the plan's retention period (Plus 28 days, Pro 60, Max 90; Free 7).
