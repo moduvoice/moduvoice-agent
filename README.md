@@ -1,6 +1,6 @@
 # ModuVoice for AI agents
 
-Korean AI text-to-speech for your coding agent: 69 character voices (59 Korean: standard plus Gyeongsang, Jeolla and Pyongyang dialects; 10 foreign: English, Vietnamese, Chinese, Thai, Indonesian), 48 kHz. This repo has an MCP server config, one canonical skill, and per-tool setup for Claude Code, Codex, Cursor, Gemini CLI, VS Code Copilot, Windsurf and any MCP client. Korean version: [README.ko.md](README.ko.md).
+Korean AI text-to-speech for your coding agent: 102 character voices (92 Korean: standard plus Gyeongsang, Jeolla, Chungcheong and Pyongyang dialects; 10 foreign: English, Vietnamese, Chinese, Thai, Indonesian), 48 kHz. This repo has an MCP server config, one canonical skill, and per-tool setup for Claude Code, Codex, Cursor, Gemini CLI, VS Code Copilot, Windsurf and any MCP client. Korean version: [README.ko.md](README.ko.md).
 
 - Remote MCP server: `https://api.moduvoice.com/mcp` (Streamable HTTP, stateless)
 - Auth header: `Authorization: Bearer $MODUVOICE_API_KEY`
